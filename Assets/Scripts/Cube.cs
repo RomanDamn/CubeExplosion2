@@ -6,15 +6,13 @@ using UnityEngine;
 [RequireComponent(typeof(CubeSpawner))]
 public class Cube : MonoBehaviour
 {
-	[SerializeField] private RayCaster _rayCast;
-
-	public float ExplosionSplitChance = 100f;
+	private float _explosionSplitChance = 100f;
 
 	public void HandleCubeClick()
 	{
 		float splitChance = Random.Range(1f, 100f);
 
-		if (splitChance <= ExplosionSplitChance)
+		if (splitChance <= _explosionSplitChance)
 		{
 			if (gameObject.TryGetComponent(out CubeSpawner cubeSpawner))
 			{
@@ -32,5 +30,10 @@ public class Cube : MonoBehaviour
 		}
 
 		Destroy(gameObject);
+	}
+
+	public void DecreaseExplosionSplitChance(int devider)
+	{
+		_explosionSplitChance /= devider;
 	}
 }

@@ -3,7 +3,7 @@ using static Unity.VisualScripting.Member;
 
 public class Exploder : MonoBehaviour
 {
-	[SerializeField] private GameObject _ExplosionObject;
+	[SerializeField] private GameObject _explosionObject;
 
 	private int _explosionForceFacteur = 1000;
 	private int _explosionRadiusFacteur = 10;
@@ -13,11 +13,11 @@ public class Exploder : MonoBehaviour
 		rigidbody.AddExplosionForce(explosionForce, explosionPosition, explosionRadius);
 	}
 
-	public void ExplodeAround(GameObject gameObject)
+	public void ExplodeAround(GameObject objectToExplode)
 	{
-		float explosionRadius = CountExplosionRadius(gameObject.transform.localScale);
-		gameObject.TryGetComponent(out MeshRenderer originMesh);
-		Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, 8);
+		float explosionRadius = CountExplosionRadius(objectToExplode.transform.localScale);
+		objectToExplode.TryGetComponent(out MeshRenderer originMesh);
+		Collider[] colliders = Physics.OverlapSphere(objectToExplode.transform.position, 8);
 
 		foreach (Collider explosionItem in colliders)
 		{
@@ -27,14 +27,14 @@ public class Exploder : MonoBehaviour
 			{
 				explosionItem.TryGetComponent(out Rigidbody rigidbody);
 
-				if (rigidbody != null && explosionItem != gameObject)
+				if (rigidbody != null && explosionItem != objectToExplode)
 				{
-					float explosionForce = CountExplosionForce(explosionItem.transform.localScale, gameObject.transform.position, explosionItem.transform.position);
-					explosionItem.GetComponent<Exploder>().Explode(rigidbody, gameObject.transform.position, explosionForce, explosionRadius);
+					float explosionForce = CountExplosionForce(explosionItem.transform.localScale, objectToExplode.transform.position, explosionItem.transform.position);
+					explosionItem.GetComponent<Exploder>().Explode(rigidbody, objectToExplode.transform.position, explosionForce, explosionRadius);
 				}
 			}
 
-			Instantiate(_ExplosionObject, gameObject.transform.position, Quaternion.identity);
+			Instantiate(_explosionObject, objectToExplode.transform.position, Quaternion.identity);
 		}
 	}
 

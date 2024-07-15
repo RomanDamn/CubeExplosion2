@@ -963,7 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfd7cbdadbaa1e469dc83af33634300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ExplosionObject: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
+  _explosionObject: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7, type: 3}
 --- !u!114 &1089903174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,8 +988,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab67b0c8361d7fc459c669907bd40ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rayCast: {fileID: 963194229}
-  ExplosionSplitChance: 100
 --- !u!1 &1463704961
 GameObject:
   m_ObjectHideFlags: 0

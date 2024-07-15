@@ -18,12 +18,11 @@ public class CubeSpawner : MonoBehaviour
         {
             GameObject cube = Instantiate(originObject);
             cube.transform.position = originObject.transform.position;
-            cube.transform.localScale = cube.transform.localScale / _cubeScaleDevider;
+            cube.transform.localScale /= _cubeScaleDevider;
             cube.GetComponent<Renderer>().material.color = Random.ColorHSV();
-			cube.GetComponent<Cube>().ExplosionSplitChance /= _cubeExplosionDevider;
-			cube.TryGetComponent(out Rigidbody rigidbody);
+			cube.GetComponent<Cube>().DecreaseExplosionSplitChance(_cubeExplosionDevider);
 
-			if (rigidbody != null)
+			if (cube.TryGetComponent(out Rigidbody rigidbody))
             {
 				cube.GetComponent<Exploder>().Explode(rigidbody, rigidbody.transform.position, _explosionForce, _explosionRadius);
 			}
