@@ -21,9 +21,7 @@ public class Exploder : MonoBehaviour
 
 		foreach (Collider explosionItem in colliders)
 		{
-			explosionItem.TryGetComponent(out MeshRenderer mesh);
-
-			if (mesh != null && mesh.tag == originMesh.tag)
+			if (explosionItem.GetComponent<Cube>() != null)
 			{
 				explosionItem.TryGetComponent(out Rigidbody rigidbody);
 
