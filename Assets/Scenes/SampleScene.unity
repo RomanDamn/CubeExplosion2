@@ -976,6 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dac842568c98b7d4cab5ac7e34600d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 1089903175}
 --- !u!114 &1089903175
 MonoBehaviour:
   m_ObjectHideFlags: 0
